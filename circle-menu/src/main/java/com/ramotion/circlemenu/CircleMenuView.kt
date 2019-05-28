@@ -100,7 +100,7 @@ class CircleMenuView : FrameLayout {
 
   private val openMenuAnimation: Animator
     get() {
-      val alphaAnimation = ObjectAnimator.ofFloat(mMenuButton, "alpha", DEFAULT_CLOSE_ICON_ALPHA)
+      val alphaAnimation = ObjectAnimator.ofFloat(mMenuButton!!, "alpha", DEFAULT_CLOSE_ICON_ALPHA)
 
       val kf0 = Keyframe.ofFloat(0f, 0f)
       val kf1 = Keyframe.ofFloat(0.5f, 60f)
@@ -156,9 +156,9 @@ class CircleMenuView : FrameLayout {
 
   private val closeMenuAnimation: Animator
     get() {
-      val scaleX1 = ObjectAnimator.ofFloat(mMenuButton, "scaleX", 0f)
-      val scaleY1 = ObjectAnimator.ofFloat(mMenuButton, "scaleY", 0f)
-      val alpha1 = ObjectAnimator.ofFloat(mMenuButton, "alpha", 0f)
+      val scaleX1 = ObjectAnimator.ofFloat(mMenuButton!!, "scaleX", 0f)
+      val scaleY1 = ObjectAnimator.ofFloat(mMenuButton!!, "scaleY", 0f)
+      val alpha1 = ObjectAnimator.ofFloat(mMenuButton!!, "alpha", 0f)
       val set1 = AnimatorSet()
       set1.playTogether(scaleX1, scaleY1, alpha1)
       set1.addListener(object : AnimatorListenerAdapter() {
@@ -174,10 +174,10 @@ class CircleMenuView : FrameLayout {
         }
       })
 
-      val angle = ObjectAnimator.ofFloat(mMenuButton, "rotation", 0)
-      val alpha2 = ObjectAnimator.ofFloat(mMenuButton, "alpha", 1f)
-      val scaleX2 = ObjectAnimator.ofFloat(mMenuButton, "scaleX", 1f)
-      val scaleY2 = ObjectAnimator.ofFloat(mMenuButton, "scaleY", 1f)
+      val angle = ObjectAnimator.ofFloat(mMenuButton!!, "rotation", 0f)
+      val alpha2 = ObjectAnimator.ofFloat(mMenuButton!!, "alpha", 1f)
+      val scaleX2 = ObjectAnimator.ofFloat(mMenuButton!!, "scaleX", 1f)
+      val scaleY2 = ObjectAnimator.ofFloat(mMenuButton!!, "scaleY", 1f)
       val set2 = AnimatorSet()
       set2.interpolator = OvershootInterpolator()
       set2.playTogether(angle, alpha2, scaleX2, scaleY2)
@@ -561,10 +561,10 @@ class CircleMenuView : FrameLayout {
       mRingView!!.setStrokeColor(csl.defaultColor)
     }
 
-    val ring = ObjectAnimator.ofFloat(mRingView, "angle", 360)
-    val scaleX = ObjectAnimator.ofFloat(mRingView, "scaleX", 1f, DEFAULT_RING_SCALE_RATIO)
-    val scaleY = ObjectAnimator.ofFloat(mRingView, "scaleY", 1f, DEFAULT_RING_SCALE_RATIO)
-    val visible = ObjectAnimator.ofFloat(mRingView, "alpha", 1f, 0f)
+    val ring = ObjectAnimator.ofFloat(mRingView!!, "angle", 360f)
+    val scaleX = ObjectAnimator.ofFloat(mRingView!!, "scaleX", 1f, DEFAULT_RING_SCALE_RATIO)
+    val scaleY = ObjectAnimator.ofFloat(mRingView!!, "scaleY", 1f, DEFAULT_RING_SCALE_RATIO)
+    val visible = ObjectAnimator.ofFloat(mRingView!!, "alpha", 1f, 0f)
 
     val lastSet = AnimatorSet()
     lastSet.playTogether(scaleX, scaleY, visible, closeMenuAnimation)
